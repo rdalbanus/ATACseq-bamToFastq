@@ -1,0 +1,14 @@
+email: albanus@umich.edu
+libraries:
+    'ABCU196':
+        genome: hg19
+        readgroups:
+            ABCU196_50_1:
+            - /lab/data/nih/2015_08_07_isletEndocAtacSeq/islet_abcu196/ABCU196_50_1.merged.pe.hg19.sorted.bam
+            ABCU196_50_2:
+            - /lab/data/nih/2015_08_07_isletEndocAtacSeq/islet_abcu196/ABCU196_50_2.merged.pe.hg19.sorted.bam
+            ABCU196_50_3:
+            - /lab/data/nih/2015_08_07_isletEndocAtacSeq/islet_abcu196/ABCU196_50_3.merged.pe.hg19.sorted.bam
+            ABCU196_50_4:
+            - /lab/data/nih/2015_08_07_isletEndocAtacSeq/islet_abcu196/ABCU196_50_4.merged.pe.hg19.sorted.bam
+results: /lab/work/albanus/2018_NIH_remapping/abcu196

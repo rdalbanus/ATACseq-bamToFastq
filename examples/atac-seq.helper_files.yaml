@@ -1,0 +1,14 @@
+
+blacklist:
+    hg19:
+    - /lab/data/reference/human/hg19/annot/wgEncodeDukeMapabilityRegionsExcludable.bed.gz
+    - /lab/data/reference/human/hg19/annot/wgEncodeDacMapabilityConsensusExcludable.bed.gz
+bwa_index:
+    hg19: /lab/data/reference/human/hg19/index/bwa/0.7.15
+    mm9: /lab/data/reference/mouse/mm9/index/bwa/0.7.15
+email: example@wolverine.theparkerlab.org
+tss:
+    hg19: /lab/data/reference/human/hg19/annot/hg19.tss.refseq.housekeeping.ortho.bed
+    rn5: /lab/data/reference/rat/rn5/annot/rn5.tss.refseq.housekeeping.ortho.bed
+whitelist:
+    rn5: /lab/data/reference/rat/rn5/annot/rn5.K30.mappable_only.bed.gz

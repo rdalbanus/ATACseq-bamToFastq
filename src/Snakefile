@@ -1,0 +1,132 @@
+#! /usr/bin/env python
+#
+# The Parker Lab (theparkerlab.org)
+# University of Michigan, Ann Arbor
+#
+
+
+import itertools
+import os
+import sys
+import functools
+
+
+# set path generator function
+prefix_results = functools.partial(os.path.join, config['results'])
+
+# target directories; relative to root
+BAM_COLLATED_DIR = prefix_results('bam_collated')
+FASTQ_DIR = prefix_results('fastq')
+
+# logs and other stuff
+LOG_DIR = prefix_results('logs')
+VERSION_DIR = prefix_results('versions')
+
+
+# Helper functions
+
+def iterate_all_libraries():
+    for library in sorted(config['libraries'].keys()):
+        yield library
+
+
+def iterate_library_readgroups(library):
+    for rg in sorted(config['libraries'][library]['readgroups'].keys()):
+        yield rg
+
+
+def readgroup_to_library(readgroup):
+    for library in iterate_all_libraries():
+        for library_readgroup in iterate_library_readgroups(library):
+            if readgroup == library_readgroup:
+                return library
+
+
+def iterate_all_readgroups():
+    for library in iterate_all_libraries():
+        for readgroup in iterate_library_readgroups(library):
+            yield readgroup
+
+
+def list_readgroup_bams(readgroup):
+    library = readgroup_to_library(readgroup)
+    return config['libraries'][library]['readgroups'][readgroup]
+
+
+def iterate_all_bams():
+    for readgroup in iterate_all_readgroups():
+        for bam in list_readgroup_bams(readgroup):
+            yield bam
+
+
+def bam_basename_to_bam(bam_basename):
+    for bam in iterate_all_bams():
+        if bam_basename == os.path.basename(bam):
+            return bam
+    sys.stderr.write('ERROR: could not find bam corresponding to {}; exiting.\n'.format(bam_basename))
+    sys.exit()
+
+
+# Pipeline
+
+rule all:
+    input:
+        # Collated bam output
+        # [os.path.join(BAM_COLLATED_DIR, '{}.collated.bam'.format(os.path.basename(bam).replace('.bam', ''))) for bam in iterate_all_bams()],
+        # fastq output
+        [os.path.join(FASTQ_DIR, '{}.1.fastq'.format(os.path.basename(bam).replace('.bam', ''))) for bam in iterate_all_bams()],
+        [os.path.join(FASTQ_DIR, '{}.2.fastq'.format(os.path.basename(bam).replace('.bam', ''))) for bam in iterate_all_bams()],
+
+        #
+        # software versions
+        #
+
+        os.path.join(VERSION_DIR, 'samtools_version.txt')
+
+
+rule collate_bam:
+    input:
+        lambda wildcards: bam_basename_to_bam('{}.bam'.format(wildcards.bam_basename))
+    output:
+        os.path.join(BAM_COLLATED_DIR, '{bam_basename}.collated.bam')
+    log:
+        os.path.join(LOG_DIR, 'collate.{bam_basename}.log')
+    shell:
+        'ionice -c2 -n7 samtools collate {input} {output} &> {log}'
+
+rule bam_to_fastq:
+    input:
+        os.path.join(BAM_COLLATED_DIR, '{bam_basename}.collated.bam')
+    output:
+        fq1 = os.path.join(FASTQ_DIR, '{bam_basename}.1.fastq'),
+        fq2 = os.path.join(FASTQ_DIR, '{bam_basename}.2.fastq')
+    log:
+        os.path.join(LOG_DIR, 'bam_to_fastq.{bam_basename}.log')
+    shell:
+        "ionice -c2 -n7 bamToFastq -i {input} -fq {output.fq1} -fq2 {output.fq2} &> {log}"
+
+
+##
+## debug info
+##
+
+rule versions:
+    output:
+        samtools_version = os.path.join(VERSION_DIR, 'samtools_version.txt'),
+    run:
+        shell('samtools --version &> {output.samtools_version} || echo ""')
+
+##
+## notification
+##
+
+onerror:
+  print("Error: Snakemake aborted!")
+  shell("mail -s 'Snakemake Job Error: See log inside!' {config[email]} < {log}")
+
+
+onsuccess:
+  print("Success: Snakemake completed!")
+  shell("mail -s 'Snakemake Job Completed: Have a Beer!' {config[email]} < {log}")
+
+# vim: ft=snakemake
