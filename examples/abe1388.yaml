@@ -1,0 +1,30 @@
+email: albanus@umich.edu
+libraries:
+    'ABE1388_250':
+        genome: hg19
+        readgroups:
+            ABE1388_250_11:
+            - /lab/data/nih/2015_08_07_isletEndocAtacSeq/islet_abe1388/Isl_250_11_GES14_02356_TAAGGCGA_LaneAll.pytrim.bam
+            ABE1388_250_12:
+            - /lab/data/nih/2015_08_07_isletEndocAtacSeq/islet_abe1388/Isl_250_12_GES14_02357_CGTACTAG_LaneAll.pytrim.bam
+            ABE1388_250_13:
+            - /lab/data/nih/2015_08_07_isletEndocAtacSeq/islet_abe1388/Isl_250_13_GES14_02358_AGGCAGAA_LaneAll.pytrim.bam
+    'ABE1388_50':
+        genome: hg19
+        readgroups:
+            ABE1388_50_14:
+            - /lab/data/nih/2015_08_07_isletEndocAtacSeq/islet_abe1388/Isl_50_14_GES14_02359_TCCTGAGC_LaneAll.pytrim.bam
+            ABE1388_50_15:
+            - /lab/data/nih/2015_08_07_isletEndocAtacSeq/islet_abe1388/Isl_50_15_GES14_02360_GGACTCCT_LaneAll.pytrim.bam
+            ABE1388_50_16:
+            - /lab/data/nih/2015_08_07_isletEndocAtacSeq/islet_abe1388/Isl_50_16_GES14_02361_TAGGCATG_LaneAll.pytrim.bam
+    'ABE1388_25':
+        genome: hg19
+        readgroups:
+            ABE1388_25_17:
+            - /lab/data/nih/2015_08_07_isletEndocAtacSeq/islet_abe1388/Isl_25_17_GES14_02362_CTCTCTAC_LaneAll.pytrim.bam
+            ABE1388_25_18:
+            - /lab/data/nih/2015_08_07_isletEndocAtacSeq/islet_abe1388/Isl_25_18_GES14_02363_CAGAGAGG_LaneAll.pytrim.bam
+            ABE1388_25_19:
+            - /lab/data/nih/2015_08_07_isletEndocAtacSeq/islet_abe1388/Isl_25_19_GES14_02364_GCTACGCT_LaneAll.pytrim.bam
+results: /lab/work/albanus/2018_NIH_remapping/abe1388

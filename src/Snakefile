@@ -89,10 +89,12 @@ rule collate_bam:
         lambda wildcards: bam_basename_to_bam('{}.bam'.format(wildcards.bam_basename))
     output:
         os.path.join(BAM_COLLATED_DIR, '{bam_basename}.collated.bam')
+    params:
+        prefix = os.path.join(BAM_COLLATED_DIR, '{bam_basename}.collated')
     log:
         os.path.join(LOG_DIR, 'collate.{bam_basename}.log')
     shell:
-        'ionice -c2 -n7 samtools collate {input} {output} &> {log}'
+        'ionice -c2 -n7 samtools collate {input} {params.prefix} &> {log}'
 
 rule bam_to_fastq:
     input:
