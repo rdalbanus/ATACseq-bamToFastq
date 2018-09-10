@@ -27,4 +27,4 @@ libraries:
             - /lab/data/nih/2015_08_07_isletEndocAtacSeq/islet_abe1388/Isl_25_18_GES14_02363_CAGAGAGG_LaneAll.pytrim.bam
             ABE1388_25_19:
             - /lab/data/nih/2015_08_07_isletEndocAtacSeq/islet_abe1388/Isl_25_19_GES14_02364_GCTACGCT_LaneAll.pytrim.bam
-results: /lab/work/albanus/2018_NIH_remapping/abe1388
+results: /lab/work/albanus/2018_NIH_bam2fastq/abe1388

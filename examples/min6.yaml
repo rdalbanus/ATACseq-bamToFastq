@@ -1,0 +1,47 @@
+email: albanus@umich.edu
+libraries:
+    'MIN6_01':
+        genome: mm9
+        readgroups:
+            ALD0001_5:
+            - /lab/work/hensley/data/nih/20150416/bam/min6/140612_OPTIMUS_C46GKANXX.5.6912959.bam
+            ALD0001_6:
+            - /lab/work/hensley/data/nih/20150416/bam/min6/140612_OPTIMUS_C46GKANXX.6.6912959.bam
+            ALD0001_7:
+            - /lab/work/hensley/data/nih/20150416/bam/min6/140612_OPTIMUS_C46GKANXX.7.6912959.bam
+            ALD0001_8:
+            - /lab/work/hensley/data/nih/20150416/bam/min6/140612_OPTIMUS_C46GKANXX.8.6912959.bam
+    'MIN6_02':
+        genome: mm9
+        readgroups:
+            ALD0002_5:
+            - /lab/work/hensley/data/nih/20150416/bam/min6/140612_OPTIMUS_C46GKANXX.5.6912963.bam
+            ALD0002_6:
+            - /lab/work/hensley/data/nih/20150416/bam/min6/140612_OPTIMUS_C46GKANXX.6.6912963.bam
+            ALD0002_7:
+            - /lab/work/hensley/data/nih/20150416/bam/min6/140612_OPTIMUS_C46GKANXX.7.6912963.bam
+            ALD0002_8:
+            - /lab/work/hensley/data/nih/20150416/bam/min6/140612_OPTIMUS_C46GKANXX.8.6912963.bam
+    'MIN6_03':
+        genome: mm9
+        readgroups:
+            ALD0003_5:
+            - /lab/work/hensley/data/nih/20150416/bam/min6/140612_OPTIMUS_C46GKANXX.5.6912957.bam
+            ALD0003_6:
+            - /lab/work/hensley/data/nih/20150416/bam/min6/140612_OPTIMUS_C46GKANXX.6.6912957.bam
+            ALD0003_7:
+            - /lab/work/hensley/data/nih/20150416/bam/min6/140612_OPTIMUS_C46GKANXX.7.6912957.bam
+            ALD0003_8:
+            - /lab/work/hensley/data/nih/20150416/bam/min6/140612_OPTIMUS_C46GKANXX.8.6912957.bam
+    'MIN6_04':
+        genome: mm9
+        readgroups:
+            ALD0004_5:
+            - /lab/work/hensley/data/nih/20150416/bam/min6/140612_OPTIMUS_C46GKANXX.5.6912949.bam
+            ALD0004_6:
+            - /lab/work/hensley/data/nih/20150416/bam/min6/140612_OPTIMUS_C46GKANXX.6.6912949.bam
+            ALD0004_7:
+            - /lab/work/hensley/data/nih/20150416/bam/min6/140612_OPTIMUS_C46GKANXX.7.6912949.bam
+            ALD0004_8:
+            - /lab/work/hensley/data/nih/20150416/bam/min6/140612_OPTIMUS_C46GKANXX.8.6912949.bam
+results: /lab/work/albanus/2018_NIH_bam2fastq/min6

@@ -1,5 +1,5 @@
 #!/bin/bash
-# cd /lab/work/albanus/2018_NIH_remapping
+# cd /lab/work/albanus/2018_NIH_bam2fastq
 
 ln -sf ~albanus/pipelines/ATACseq-bamToFastq/bin .
 ln -sf ~albanus/pipelines/ATACseq-bamToFastq/src .
@@ -7,9 +7,9 @@ ln -sf ~albanus/pipelines/ATACseq-bamToFastq/examples .
 ln -sf ~albanus/pipelines/ATACseq-bamToFastq/commands .
 
 
-for sample in abe1388 abcu196
+for sample in min6 #abe1388 abcu196
 do
     echo "snakemake -n -r --configfile examples/${sample}.yaml --snakefile src/Snakefile"
-    echo "snakemake -j 10 --configfile examples/abe1388.yaml --snakefile src/Snakefile \
+    echo "snakemake -j 5 --configfile examples/${sample}.yaml --snakefile src/Snakefile \
     --cluster-config src/cluster.config  --cluster \"sbatch -t {cluster.time} -n {cluster.N} --mem-per-cpu={cluster.mem}\""
 done

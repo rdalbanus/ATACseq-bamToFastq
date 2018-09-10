@@ -11,4 +11,4 @@ libraries:
             - /lab/data/nih/2015_08_07_isletEndocAtacSeq/islet_abcu196/ABCU196_50_3.merged.pe.hg19.sorted.bam
             ABCU196_50_4:
             - /lab/data/nih/2015_08_07_isletEndocAtacSeq/islet_abcu196/ABCU196_50_4.merged.pe.hg19.sorted.bam
-results: /lab/work/albanus/2018_NIH_remapping/abcu196
+results: /lab/work/albanus/2018_NIH_bam2fastq/abcu196
